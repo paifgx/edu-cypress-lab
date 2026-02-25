@@ -1,32 +1,63 @@
+.app-layout {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--color-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.app-header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0.75rem 1.5rem;
-  background: var(--color-surface);
-  border-bottom: 1px solid var(--color-border);
-  box-shadow: var(--shadow);
+}
+
+.app-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.app-logo {
+  color: var(--color-primary);
 }
 
 .app-title {
-  font-size: 1.125rem;
+  font-size: 1.25rem;
   font-weight: 700;
-  color: var(--color-primary);
+  color: var(--color-text);
+  margin: 0;
+  letter-spacing: -0.025em;
 }
 
 .app-nav {
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .app-nav-link {
-  padding: 0.4rem 0.75rem;
-  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.875rem;
+  border-radius: var(--radius-sm);
   font-size: 0.875rem;
   font-weight: 500;
   color: var(--color-text-muted);
-  transition: background 0.15s, color 0.15s;
+  transition: all 0.2s ease;
 }
 
 .app-nav-link:hover {
@@ -36,23 +67,34 @@
 }
 
 .app-nav-link--active {
-  background: var(--color-primary);
-  color: white;
+  background: var(--color-primary-light);
+  color: var(--color-primary-hover);
 }
 
 .app-nav-link--active:hover {
-  background: var(--color-primary-hover);
-  color: white;
+  background: var(--color-primary-light);
+  color: var(--color-primary-hover);
 }
 
 .nav-logout {
   margin-left: 0.5rem;
-  font-size: 0.8rem;
-  padding: 0.35rem 0.65rem;
+  font-size: 0.875rem;
+  padding: 0.5rem 0.875rem;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-text-muted);
+  box-shadow: none;
+}
+
+.nav-logout:hover {
+  background: #fee2e2;
+  color: var(--color-danger-hover);
 }
 
 .app-main {
-  max-width: 960px;
+  flex: 1;
+  width: 100%;
+  max-width: 1024px;
   margin: 0 auto;
-  padding: 2rem 1.5rem;
+  padding: 2.5rem 1.5rem;
 }

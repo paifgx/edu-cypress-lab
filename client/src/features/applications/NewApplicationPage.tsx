@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { apiFetch } from '@/lib/api'
 import RequireAuth from '@/features/auth/RequireAuth'
 import type { Program } from '@/lib/types'
+import { CheckCircle2, AlertCircle, FileText, User, Mail, Send } from 'lucide-react'
 import './ApplicationPages.css'
 
 function NewApplicationForm() {
@@ -44,66 +45,88 @@ function NewApplicationForm() {
   }
 
   return (
-    <div data-testid="application-new-page">
-      <h2>Neuen Antrag stellen</h2>
+    <div data-testid="application-new-page" className="application-container">
+      <div className="page-header">
+        <h2>Neuen Antrag stellen</h2>
+        <p>Bitte fuellen Sie das Formular vollstaendig aus, um Ihren Antrag einzureichen.</p>
+      </div>
 
       {success && (
         <div data-testid="toast" className="toast-success">
-          Antrag erfolgreich eingereicht!
+          <CheckCircle2 size={20} />
+          <span>Antrag erfolgreich eingereicht! Sie werden weitergeleitet...</span>
         </div>
       )}
 
       {error && (
         <div role="alert" data-testid="form-error" className="error-banner">
-          {error}
+          <AlertCircle size={20} />
+          <span>{error}</span>
         </div>
       )}
 
       <form className="application-form card" onSubmit={handleSubmit}>
-        <label>
-          Programm
+        <div className="form-group">
+          <label htmlFor="program">
+            <FileText size={16} />
+            Programm auswaehlen
+          </label>
           <select
+            id="program"
             data-testid="select-program"
             value={selectedProgram}
             onChange={(e) => setSelectedProgram(e.target.value)}
             required
           >
-            <option value="">Bitte waehlen...</option>
+            <option value="" disabled>Bitte waehlen...</option>
             {programs.map((p) => (
               <option key={p.id} value={p.id}>{p.title}</option>
             ))}
           </select>
-        </label>
+        </div>
 
-        <label>
-          Ihr Name
+        <div className="form-group">
+          <label htmlFor="name">
+            <User size={16} />
+            Ihr vollstaendiger Name
+          </label>
           <input
+            id="name"
             data-testid="input-name"
             type="text"
+            placeholder="Max Mustermann"
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
           />
-        </label>
+        </div>
 
-        <label>
-          E-Mail
+        <div className="form-group">
+          <label htmlFor="email">
+            <Mail size={16} />
+            E-Mail Adresse
+          </label>
           <input
+            id="email"
             data-testid="input-email"
             type="email"
+            placeholder="max@example.com"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
           />
-        </label>
+        </div>
 
-        <button
-          data-testid="submit-application"
-          type="submit"
-          className="primary"
-        >
-          {submitting ? 'Wird gesendet...' : 'Antrag einreichen'}
-        </button>
+        <div className="form-actions">
+          <button
+            data-testid="submit-application"
+            type="submit"
+            className="primary submit-btn"
+          >
+            <Send size={18} />
+            {submitting ? 'Wird gesendet...' : 'Antrag einreichen'}
+          </button>
+        </div>
       </form>
     </div>
   )
