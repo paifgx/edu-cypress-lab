@@ -1,0 +1,17 @@
+{
+  "name": "demo-service-portal",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": ["client", "api"],
+  "scripts": {
+    "dev": "concurrently -n client,api -c blue,green \"npm run dev -w client\" \"npm run dev -w api\"",
+    "dev:client": "npm run dev -w client",
+    "dev:api": "npm run dev -w api",
+    "build": "npm run build -w client",
+    "preview": "npm run preview -w client",
+    "start:api": "npm start -w api"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
