@@ -78,7 +78,7 @@ export default function ProgramsPage() {
             <div key={p.id} data-testid="program-card" className="card program-card">
               <div className="program-card-header">
                 <span className="program-category">{p.category}</span>
-                <span className="program-id">{p.id}</span>
+                {p.id && <span data-testid="program-id" className="program-id">{p.id}</span>}
               </div>
               <h3>{p.title}</h3>
               <p>{p.description}</p>

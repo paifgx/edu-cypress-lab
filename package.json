@@ -9,7 +9,10 @@
     "dev:api": "npm run dev -w api",
     "build": "npm run build -w client",
     "preview": "npm run preview -w client",
-    "start:api": "npm start -w api"
+    "start:api": "npm start -w api",
+    "cy:install": "npm run cy:install -w client",
+    "cy:open": "npm run cy:open -w client",
+    "cy:run": "npm run cy:run -w client"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
