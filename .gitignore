@@ -6,3 +6,8 @@ dist/
 *.log
 .DS_Store
 INSTRUCTOR_NOTES.md
+
+# Cypress
+client/cypress/videos/
+client/cypress/screenshots/
+client/cypress/downloads/
